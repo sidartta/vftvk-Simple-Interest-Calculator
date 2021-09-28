@@ -1,11 +1,15 @@
 function compute() {
-  principal = document.getElementById('principal').value
-  rate = document.getElementById('rate').value
-  years = document.getElementById('years').value
+  principal = parseInt(document.getElementById('principal').value)
+  rate = parseFloat(document.getElementById('rate').value)
+  years = parseInt(document.getElementById('years').value)
 
-  futureValue = (principal * (1 + rate / 100)) ^ years
+  futureValue = principal * (1 + (rate / 100) * years)
+  console.log(principal)
+  console.log(rate)
+  console.log(years)
+  console.log(futureValue)
   todayYear = new Date().getFullYear()
-  futureYear = todayYear + parseInt(years)
+  futureYear = todayYear + years
 
   let resultCapital = document.getElementById('result-capital')
   let resultRate = document.getElementById('result-rate')
