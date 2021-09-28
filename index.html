@@ -1,16 +1,63 @@
-<html>
-    <head>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="script.js"></script>
-    <link rel="stylesheet" href="style.css">
-    </head>
-    <body>
-        <h1>Simple Interest Calculator</h1>
-
-        Amount <input type="number"  id="principal">  <br/>
-        Rate <input type="number"  id="rate">  <br/>
-        No. of Years <input type="number"  id="years">  <br/>
-        Interest : <span id="result"></span><br>
-
-        <button onclick="compute()">Compute</button>
-    </body>
+    <link rel="stylesheet" href="style.css" />
+    <title>Web App - Simple Interest Calculation</title>
+  </head>
+  <body>
+    <div id="main-container">
+      <h1>Simple Interest Calculator</h1>
+      <div id="form-div">
+        <form action="" id="calculation-form">
+          <p>
+            <label for="principal">Amount</label>
+            <input type="number" name="principal" id="principal" />
+          </p>
+          <p>
+            <label for="rate">Interest Rate</label>
+            <input
+              type="range"
+              name="rate"
+              id="rate"
+              value="5"
+              min="0"
+              max="10"
+              step=".1"
+              oninput="range_disp.value=`${rate.value}%`"
+            />
+            <output name="range_disp" for="rate">5%</output>
+          </p>
+          <p>
+            <label for="years">No. of Years</label>
+            <select name="years" id="years">
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+            </select>
+          </p>
+          <button id="validation-button" type="button" onclick="compute()">
+            Compute Interest
+          </button>
+        </form>
+        <div id="result">
+          <p>
+            If you deposit <span id="result-capital"></span>,<br />
+            at an interest rate of <span id="result-rate"></span>. <br />
+            You will receive an amount of
+            <span id="result-future-value"></span>,<br />
+            in the year <span id="result-future-year"></span>.
+          </p>
+        </div>
+      </div>
+      <div id="footer-copyright">
+        <p>&copy; Everyone Can Get Rich</p>
+      </div>
+    </div>
+  </body>
 </html>

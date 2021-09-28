@@ -1,4 +1,61 @@
-body {background-color:tan;}
-h1{color:green;}
+body {
+  background-color: Black;
+  font-family: Arial, Helvetica, sans-serif;
+}
 
+#main-container {
+  background-color: white;
+  margin: 20px auto;
+  width: 600px;
+  height: 345px;
+  border-radius: 1.5em;
+  padding: 0.5em;
+}
+#main-container h1 {
+  color: #9a99a1;
+  font-weight: 800;
+  text-align: center;
+}
 
+#calculation-form {
+  display: table;
+  margin: 0 auto;
+  width: 400px;
+}
+#calculation-form p {
+  display: table-row;
+}
+#calculation-form label {
+  display: table-cell;
+  margin: 0.5em 0;
+}
+#calculation-form input {
+  display: table-cell;
+  margin: 0.5em 0;
+}
+#calculation-form select {
+  display: table-cell;
+  margin: 0.5em 0;
+}
+input[type='range'] {
+  width: 60%;
+}
+output {
+  padding-right: 3em;
+}
+#result {
+  margin: 0 auto;
+  width: 400px;
+  visibility: hidden;
+}
+
+#validation-button {
+  margin: 0.5em auto;
+}
+
+#footer-copyright {
+  padding-left: 1em;
+  padding-bottom: 0.1em;
+  position: relative;
+  bottom: 0px;
+}
