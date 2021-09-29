@@ -1,32 +1,63 @@
-function compute() {
-  principal = parseInt(document.getElementById('principal').value)
-  rate = parseFloat(document.getElementById('rate').value)
-  years = parseInt(document.getElementById('years').value)
+const formCtrl = document.getElementById('calculation-form')
+const targetDiv = document.getElementById('result')
+const principal = document.getElementById('principal')
+const rate = document.getElementById('rate')
+const years = document.getElementById('years')
 
-  futureValue = principal * (1 + (rate / 100) * years)
-  console.log(principal)
-  console.log(rate)
-  console.log(years)
-  console.log(futureValue)
-  todayYear = new Date().getFullYear()
-  futureYear = todayYear + years
+// Input validation
+let invalidClassName = 'invalid'
+// Add a css class on submit when the input is invalid.
+principal.addEventListener('invalid', function () {
+  principal.classList.add(invalidClassName)
 
-  let resultCapital = document.getElementById('result-capital')
-  let resultRate = document.getElementById('result-rate')
-  let resultFutureValue = document.getElementById('result-future-value')
-  let resultFutureYear = document.getElementById('result-future-year')
+  // Remove the class when the input becomes valid.
+  // 'input' will fire each time the user types
+  principal.addEventListener('input', function () {
+    if (principal.validity.valid) {
+      principal.classList.remove(invalidClassName)
+    }
+  })
+})
+
+// Listen to submit event
+formCtrl.addEventListener('submit', (e) => {
+  e.preventDefault()
+
+  let formCheck = true
+  if (principal.value <= 0 || principal.value === '') {
+    formCheck = false
+    alert('Principal value must be a positive number.')
+    principal.focus()
+  }
+  if (formCheck) {
+    compute(
+      parseInt(principal.value),
+      parseFloat(rate.value),
+      parseInt(years.value)
+    )
+  }
+})
+
+// Function to Compute the future value of principal with simple interest
+function compute(principal, rate, years) {
+  const futureValue = principal * (1 + (rate / 100) * years)
+  const todayYear = new Date().getFullYear()
+  const futureYear = todayYear + years
+
+  const resultCapital = document.getElementById('result-capital')
+  const resultRate = document.getElementById('result-rate')
+  const resultFutureValue = document.getElementById('result-future-value')
+  const resultFutureYear = document.getElementById('result-future-year')
 
   resultCapital.innerText = principal
   resultRate.innerText = rate + '%'
   resultFutureValue.innerText = futureValue
   resultFutureYear.innerText = futureYear
 
-  resultCapital.style.backgroundColor = 'yellow'
-  resultRate.style.backgroundColor = 'yellow'
-  resultFutureValue.style.backgroundColor = 'yellow'
-  resultFutureYear.style.backgroundColor = 'yellow'
-
-  let targetDiv = document.getElementById('result')
+  let results = document.querySelectorAll('.highlight')
+  for (i = 0; i < results.length; i++) {
+    results[i].style.backgroundColor = 'yellow'
+  }
 
   targetDiv.style.visibility = 'visible'
 }

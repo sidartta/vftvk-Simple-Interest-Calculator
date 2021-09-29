@@ -4,8 +4,8 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="script.js"></script>
     <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
     <title>Web App - Simple Interest Calculation</title>
   </head>
   <body>
@@ -15,7 +15,14 @@
         <form action="" id="calculation-form">
           <p>
             <label for="principal">Amount</label>
-            <input type="number" name="principal" id="principal" />
+            <input
+              type="number"
+              name="principal"
+              id="principal"
+              placeholder="Enter principal amount"
+              min="1"
+              required
+            />
           </p>
           <p>
             <label for="rate">Interest Rate</label>
@@ -24,9 +31,9 @@
               name="rate"
               id="rate"
               value="5"
-              min="0"
-              max="10"
-              step=".1"
+              min="1"
+              max="20"
+              step=".5"
               oninput="range_disp.value=`${rate.value}%`"
             />
             <output name="range_disp" for="rate">5%</output>
@@ -46,17 +53,17 @@
               <option value="10">10</option>
             </select>
           </p>
-          <button id="validation-button" type="button" onclick="compute()">
-            Compute Interest
-          </button>
+          <button id="validation-button">Compute Interest</button>
         </form>
         <div id="result">
           <p>
-            If you deposit <span id="result-capital"></span>,<br />
-            at an interest rate of <span id="result-rate"></span>. <br />
+            If you deposit
+            <span id="result-capital" class="highlight"></span>,<br />
+            at an interest rate of
+            <span id="result-rate" class="highlight"></span>. <br />
             You will receive an amount of
-            <span id="result-future-value"></span>,<br />
-            in the year <span id="result-future-year"></span>.
+            <span id="result-future-value" class="highlight"></span>,<br />
+            in the year <span id="result-future-year" class="highlight"></span>.
           </p>
         </div>
       </div>

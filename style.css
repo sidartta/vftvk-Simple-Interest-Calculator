@@ -32,6 +32,11 @@ body {
 #calculation-form input {
   display: table-cell;
   margin: 0.5em 0;
+  border-radius: 0.25em;
+}
+input.invalid {
+  border: solid 3px red;
+  box-shadow: none;
 }
 #calculation-form select {
   display: table-cell;
@@ -43,6 +48,7 @@ input[type='range'] {
 output {
   padding-right: 3em;
 }
+
 #result {
   margin: 0 auto;
   width: 400px;
