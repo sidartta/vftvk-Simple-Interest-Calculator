@@ -35,7 +35,7 @@ formCtrl.addEventListener('submit', (e) => {
 
 // Function to Compute the future value of principal with simple interest
 function compute(principal, rate, years) {
-  const futureValue = principal * (1 + (rate / 100) * years)
+  const futureValue = principal * ((rate / 100) * years)
   const todayYear = new Date().getFullYear()
   const futureYear = todayYear + years
 
