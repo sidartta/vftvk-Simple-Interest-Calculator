@@ -6,17 +6,12 @@ const years = document.getElementById('years')
 
 // Input validation
 let invalidClassName = 'invalid'
-// Add a css class on submit when the input is invalid.
-principal.addEventListener('invalid', function () {
-  principal.classList.add(invalidClassName)
-
-  // Remove the class when the input becomes valid.
-  // 'input' will fire each time the user types
-  principal.addEventListener('input', function () {
-    if (principal.validity.valid) {
-      principal.classList.remove(invalidClassName)
-    }
-  })
+principal.addEventListener('change', (e) => {
+  if (principal.value <= 0 || principal.value === '') {
+    principal.classList.add(invalidClassName)
+  } else {
+    principal.classList.remove(invalidClassName)
+  }
 })
 
 // Listen to submit event
